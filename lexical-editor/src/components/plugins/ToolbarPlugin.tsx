@@ -726,11 +726,14 @@ export default function ToolbarPlugin() {
             onClick={() => {
               editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "justify");
             }}
-            className="toolbar-item"
+            className="toolbar-item spaced"
             aria-label="Justify Align"
           >
             <i className="format justify-align" />
           </button>{" "}
+          <button className="toolbar-item" aria-label="Insert Image">
+            <i className="format insert-image" />
+          </button>
         </>
       )}
     </div>
