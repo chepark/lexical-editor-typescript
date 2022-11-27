@@ -1,3 +1,5 @@
+// REFERENCE https://lexical.dev/docs/demos/plugins/images
+
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $wrapNodeInElement, mergeRegister } from "@lexical/utils";
 import {
