@@ -26,7 +26,7 @@ export default function ImagesPlugin({
   captionsEnabled?: boolean;
 }): JSX.Element | null {
   const [editor] = useLexicalComposerContext();
-
+  console.log("editor in plugin", editor);
   useEffect(() => {
     if (!editor.hasNodes([ImageNode])) {
       throw new Error("ImagesPlugin: ImageNode not registered on editor");

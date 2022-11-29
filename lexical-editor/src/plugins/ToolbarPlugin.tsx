@@ -6,18 +6,23 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
+  COMMAND_PRIORITY_EDITOR,
   REDO_COMMAND,
   UNDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
   FORMAT_ELEMENT_COMMAND,
+  createCommand,
   $getSelection,
   $isRangeSelection,
+  $insertNodes,
+  $isRootOrShadowRoot,
   $createParagraphNode,
   $getNodeByKey,
   RangeSelection,
   NodeSelection,
   GridSelection,
+  LexicalCommand,
 } from "lexical";
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
 import {
@@ -25,7 +30,11 @@ import {
   $wrapNodes,
   $isAtNodeEnd,
 } from "@lexical/selection";
-import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
+import {
+  $getNearestNodeOfType,
+  $wrapNodeInElement,
+  mergeRegister,
+} from "@lexical/utils";
 import {
   INSERT_ORDERED_LIST_COMMAND,
   INSERT_UNORDERED_LIST_COMMAND,
@@ -33,6 +42,9 @@ import {
   $isListNode,
   ListNode,
 } from "@lexical/list";
+
+import { $createImageNode, ImageNode, ImagePayload } from "../nodes/ImageNode";
+
 import { createPortal } from "react-dom";
 import {
   $createHeadingNode,
@@ -47,6 +59,7 @@ import {
 } from "@lexical/code";
 
 import { LexicalEditor } from "lexical";
+import ImageTool from "./ImageTool";
 
 const LowPriority = 1;
 
@@ -72,7 +85,7 @@ interface BlockToBlockName {
   quote: string;
   ul: string;
 }
-
+FloatingLinkEditor;
 const blockTypeToBlockName: BlockToBlockName = {
   code: "Code Block",
   h1: "Large Heading",
@@ -731,9 +744,16 @@ export default function ToolbarPlugin() {
           >
             <i className="format justify-align" />
           </button>{" "}
-          <button className="toolbar-item" aria-label="Insert Image">
+          {/* <button
+            onClick={() => {
+              InsertImage({ altText: "URL image", src: FillURL() }, editor);
+            }}
+            className="toolbar-item"
+            aria-label="Insert Image"
+          >
             <i className="format insert-image" />
-          </button>
+          </button> */}
+          <ImageTool editor={editor} />
         </>
       )}
     </div>

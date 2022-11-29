@@ -15,6 +15,7 @@ import { createEditor, DecoratorNode } from "lexical";
 import * as React from "react";
 import { Suspense } from "react";
 
+// lazy loading for image component
 const ImageComponent = React.lazy(
   // @ts-ignore
   () => import("./ImageComponent")
@@ -196,7 +197,7 @@ export class ImageNode extends DecoratorNode<JSX.Element> {
 
   decorate(): JSX.Element {
     return (
-      <Suspense fallback={null}>
+      <Suspense fallback="loading...">
         <ImageComponent
           src={this.__src}
           altText={this.__altText}

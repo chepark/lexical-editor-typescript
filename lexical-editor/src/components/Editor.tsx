@@ -18,6 +18,8 @@ import { MarkdownShortcutPlugin } from "@lexical/react/LexicalMarkdownShortcutPl
 import { TRANSFORMERS } from "@lexical/markdown";
 
 import ListMaxIndentLevelPlugin from "../plugins/ListMaxIndentLevelPlugin";
+import ImagesPlugin from "../plugins/ImagePlugin";
+import { ImageNode } from "../nodes/ImageNode";
 // import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 // import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 
@@ -46,6 +48,7 @@ const editorConfig = {
     TableRowNode,
     AutoLinkNode,
     LinkNode,
+    ImageNode,
   ],
 };
 
@@ -68,6 +71,7 @@ export default function Editor() {
           <LinkPlugin />
           {/* <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} /> */}
+          <ImagesPlugin />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
         </div>
       </div>
