@@ -29,10 +29,7 @@ export default function ImageTool({
 
     reader.onload = () => {
       if (typeof reader.result === "string") {
-        editor.dispatchCommand(INSERT_IMAGE_COMMAND, {
-          altText: "",
-          src: reader.result,
-        });
+        onClick({ altText: "", src: reader.result });
       }
     };
 
