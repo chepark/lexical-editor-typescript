@@ -22,7 +22,7 @@ import ImagesPlugin from "../plugins/ImagePlugin";
 import { ImageNode } from "../nodes/ImageNode";
 import DragDropPastePlugin from "../plugins/DragDropPastePlugin";
 // import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
-// import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
+import AutoLinkPlugin from "../plugins/AutoLinkPlugin";
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
@@ -70,8 +70,8 @@ export default function Editor() {
           {/* <CodeHighlightPlugin /> */}
           <ListPlugin />
           <LinkPlugin />
-          {/* <AutoLinkPlugin />
-          <ListMaxIndentLevelPlugin maxDepth={7} /> */}
+          <AutoLinkPlugin />
+          {/*<ListMaxIndentLevelPlugin maxDepth={7} /> */}
           <ImagesPlugin />
           <DragDropPastePlugin />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />

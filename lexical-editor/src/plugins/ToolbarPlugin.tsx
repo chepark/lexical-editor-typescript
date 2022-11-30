@@ -744,15 +744,6 @@ export default function ToolbarPlugin() {
           >
             <i className="format justify-align" />
           </button>{" "}
-          {/* <button
-            onClick={() => {
-              InsertImage({ altText: "URL image", src: FillURL() }, editor);
-            }}
-            className="toolbar-item"
-            aria-label="Insert Image"
-          >
-            <i className="format insert-image" />
-          </button> */}
           <ImageTool editor={editor} />
         </>
       )}
