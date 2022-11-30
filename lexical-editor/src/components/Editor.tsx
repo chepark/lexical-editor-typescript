@@ -20,6 +20,7 @@ import { TRANSFORMERS } from "@lexical/markdown";
 import ListMaxIndentLevelPlugin from "../plugins/ListMaxIndentLevelPlugin";
 import ImagesPlugin from "../plugins/ImagePlugin";
 import { ImageNode } from "../nodes/ImageNode";
+import DragDropPastePlugin from "../plugins/DragDropPastePlugin";
 // import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 // import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 
@@ -72,6 +73,7 @@ export default function Editor() {
           {/* <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} /> */}
           <ImagesPlugin />
+          <DragDropPastePlugin />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
         </div>
       </div>
