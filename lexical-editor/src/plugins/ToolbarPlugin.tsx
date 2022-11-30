@@ -51,6 +51,7 @@ import {
   $createQuoteNode,
   $isHeadingNode,
 } from "@lexical/rich-text";
+
 import {
   $createCodeNode,
   $isCodeNode,
@@ -58,8 +59,11 @@ import {
   getCodeLanguages,
 } from "@lexical/code";
 
+import useModal from "../hooks/useModal";
+import { InsertImageDialog } from "./ImagePlugin";
 import { LexicalEditor } from "lexical";
-import ImageTool from "./ImageTool";
+
+// import ImageTool from "./ImageTool";
 
 const LowPriority = 1;
 
@@ -485,6 +489,7 @@ export default function ToolbarPlugin() {
   const [isUnderline, setIsUnderline] = useState(false);
   const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
+  const [modal, showModal] = useModal();
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -744,9 +749,25 @@ export default function ToolbarPlugin() {
           >
             <i className="format justify-align" />
           </button>{" "}
-          <ImageTool editor={editor} />
+          {/* <ImageTool editor={editor} /> */}
+          <button
+            onClick={() => {
+              showModal("Insert Image", (onClose) => (
+                <InsertImageDialog activeEditor={editor} onClose={onClose} />
+              ));
+            }}
+            className="toolbar-item spaced"
+          >
+            <i className="format insert-image" />
+          </button>
+          {/* <input
+        type={"file"}
+        accept="image/png, image/jpg"
+        onChange={(e) => handleChange(e)}
+      /> */}
         </>
       )}
+      {modal}
     </div>
   );
 }
