@@ -1,5 +1,3 @@
-import "./Modal.css";
-
 import * as React from "react";
 import { ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
@@ -76,7 +74,7 @@ function PortalImpl({
   );
 }
 
-export default function Modal({
+export const Modal = ({
   onClose,
   children,
   title,
@@ -86,7 +84,10 @@ export default function Modal({
   closeOnClickOutside?: boolean;
   onClose: () => void;
   title: string;
-}): JSX.Element {
+}): JSX.Element => {
+  useEffect(() => {
+    console.log("why");
+  });
   return createPortal(
     <PortalImpl
       onClose={onClose}
@@ -97,4 +98,4 @@ export default function Modal({
     </PortalImpl>,
     document.body
   );
-}
+};
