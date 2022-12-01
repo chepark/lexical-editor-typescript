@@ -760,11 +760,6 @@ export default function ToolbarPlugin() {
           >
             <i className="format insert-image" />
           </button>
-          {/* <input
-        type={"file"}
-        accept="image/png, image/jpg"
-        onChange={(e) => handleChange(e)}
-      /> */}
         </>
       )}
       {modal}
